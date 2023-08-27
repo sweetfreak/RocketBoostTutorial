@@ -6,7 +6,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638285859720000000
+      ticks: 638287581660000000
     m_Hash: 1164529822
   m_LockFileStatus:
     m_FilePath: /Users/jessesheehan/Documents/Unity Projects/Tutorials/GameDevTV/3D
@@ -15,7 +15,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638285859740000000
+      ticks: 638287581660000000
     m_Hash: 1381362156
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

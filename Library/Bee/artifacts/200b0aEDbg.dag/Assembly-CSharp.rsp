@@ -350,6 +350,7 @@
 -r:"Library/Bee/artifacts/200b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Users/jessesheehan/Documents/Unity Projects/Unity Versions/2022.3.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Users/jessesheehan/Documents/Unity Projects/Unity Versions/2022.3.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/MyScripts/CollisionHandler.cs"
 "Assets/MyScripts/Movement.cs"
 -langversion:9.0
 

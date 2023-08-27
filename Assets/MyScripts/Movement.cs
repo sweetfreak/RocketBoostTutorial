@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Rigidbody rb;
+    private AudioSource myAudioSource;
 
     //[SerializeField] private Vector3 forceUp = new Vector3 (0f,1f,0f);
     [SerializeField] private float mainThrust = 10f;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,7 +30,16 @@ public class Movement : MonoBehaviour
             //rb.AddRelativeForce(forceUp);NO!!
             //vector 3 is upward, multiplied by the thrust force i want, multiplied by time so it's frame-independent.
             rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+            if (!myAudioSource.isPlaying)
+            { 
+                myAudioSource.Play();
 
+            }
+
+        }
+        else
+        {
+            myAudioSource.Stop();
         }
     }
 
