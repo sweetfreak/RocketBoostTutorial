@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets/MyScripts/Movement.cs" />
+     <Compile Include="Assets/MyScripts/Oscillator.cs" />
+     <Compile Include="Assets/MyScripts/QuitApplication.cs" />
      <Compile Include="Assets/MyScripts/CollisionHandler.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/MyMats" />
@@ -53,6 +55,7 @@
      <Folder Include="Assets/sounds" />
      <Folder Include="Assets/Scenes" />
      <Folder Include="Assets/MyScripts" />
+     <Folder Include="Assets/particles" />
      <Reference Include="UnityEngine">
      <HintPath>/Users/jessesheehan/Documents/Unity Projects/Unity Versions/2022.3.7f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

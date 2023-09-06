@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    //CACHE (anything that will be called each game)
     private Rigidbody rb;
     private AudioSource myAudioSource;
 
+    //PARAMETERS (variables)
+    [Header("Variables")]
     //[SerializeField] private Vector3 forceUp = new Vector3 (0f,1f,0f);
     [SerializeField] private float mainThrust = 10f;
     [SerializeField] private float rotateSpeed = 2f;
+    [SerializeField] private AudioClip thrustSfx;
+
+    [SerializeField] private ParticleSystem upThrustParticleSystem;
+    [SerializeField] private ParticleSystem leftThrustParticleSystem;
+    [SerializeField] private ParticleSystem rightThrustParticleSystem;
+    
+    //STATES (bools)
     
     void Start()
     {
@@ -27,35 +37,76 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            //rb.AddRelativeForce(forceUp);NO!!
-            //vector 3 is upward, multiplied by the thrust force i want, multiplied by time so it's frame-independent.
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if (!myAudioSource.isPlaying)
-            { 
-                myAudioSource.Play();
-
-            }
-
+            StartThrusting();
         }
         else
         {
-            myAudioSource.Stop();
+            StopThrusting();
         }
     }
-
+    
     void ProcessRotation()
     { 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) )
         {
-            //Debug.Log("Left!");
-            ApplyRotation(rotateSpeed);
+            RotateLeft();
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            //Debug.Log("Right!");
-            //transform.Rotate(-Vector3.forward * rotateSpeed * Time.deltaTime);
-            ApplyRotation(-rotateSpeed);
+            RotateRight();
         }
+        else
+        {
+            StopRotating();
+        }
+    }
+
+    void StartThrusting()
+    {
+        //rb.AddRelativeForce(forceUp);NO!!
+        //vector 3 is upward, multiplied by the thrust force i want, multiplied by time so it's frame-independent.
+        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!myAudioSource.isPlaying)
+        { 
+            Debug.Log("playing thrust");
+            myAudioSource.PlayOneShot(thrustSfx);
+        }
+
+        if (!upThrustParticleSystem.isPlaying)
+        {
+            upThrustParticleSystem.Play();
+        }
+    }
+
+    void StopThrusting()
+    {
+        upThrustParticleSystem.Stop();
+        myAudioSource.Stop();
+    }
+
+    void RotateLeft()
+    {
+        ApplyRotation(rotateSpeed);
+        if (!leftThrustParticleSystem.isPlaying)
+        {
+            leftThrustParticleSystem.Play();
+        }
+    }
+
+    void RotateRight()
+    {
+        //transform.Rotate(-Vector3.forward * rotateSpeed * Time.deltaTime);
+        ApplyRotation(-rotateSpeed);
+        if (!rightThrustParticleSystem.isPlaying)
+        {
+            rightThrustParticleSystem.Play();
+        }
+    }
+
+    void StopRotating()
+    {
+        leftThrustParticleSystem.Stop();
+        rightThrustParticleSystem.Stop();
     }
 
     private void ApplyRotation(float rotationThisFrame)

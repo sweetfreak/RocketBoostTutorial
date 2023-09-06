@@ -352,6 +352,8 @@
 -analyzer:"/Users/jessesheehan/Documents/Unity Projects/Unity Versions/2022.3.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/MyScripts/CollisionHandler.cs"
 "Assets/MyScripts/Movement.cs"
+"Assets/MyScripts/Oscillator.cs"
+"Assets/MyScripts/QuitApplication.cs"
 -langversion:9.0
 
 /deterministic
